@@ -49,12 +49,6 @@ class PlanetDAOTest {
 
     @Test
     void testDeletePlanet() {
-        // add a new planet to avoid reference violation
-        Planet planet = new Planet();
-        planet.setId("PLA0");
-        planet.setName("Planet");
-        dao.add(session, planet);
-
         Planet last = dao.getLast(session);
         dao.delete(session, last);
         assertNotEquals(last.getId(), dao.getLast(session).getId());

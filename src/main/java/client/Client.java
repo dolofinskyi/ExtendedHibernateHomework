@@ -1,16 +1,26 @@
 package client;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import ticket.Ticket;
+
+import java.util.List;
 
 @Entity
 @Table(name = "client")
-@Data
 public class Client {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "name")
+    @Getter
+    @Setter
+    @Column(name = "name", nullable = false)
     private String name;
+
+    @Getter
+    @OneToMany(mappedBy = "client")
+    private List<Ticket> tickets;
 }

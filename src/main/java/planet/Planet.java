@@ -1,19 +1,21 @@
 package planet;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "planet")
-@Data
 public class Planet {
+    @Getter
+    @Setter
     @Id
     @Column(name = "id")
     private String id;
 
-    @Column(name = "name")
+    @Getter
+    @Setter
+    @Column(name = "name", nullable = false)
     private String name;
 }

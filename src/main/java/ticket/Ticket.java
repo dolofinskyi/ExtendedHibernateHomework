@@ -1,30 +1,41 @@
 package ticket;
 
+import client.Client;
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+import planet.Planet;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "ticket")
-@Data
 public class Ticket {
+    @Getter
     @Id
     @GeneratedValue
     private long id;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "created_at")
+    @Getter
+    @Setter
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(name = "client_id")
-    private long clientId;
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "client_id", nullable = false)
+    private Client client;
 
-    @Column(name = "from_planet_id")
-    private String fromPlanetId;
+    @Getter
+    @Setter
+    @OneToOne
+    @JoinColumn(name = "from_planet_id", nullable = false)
+    private Planet fromPlanet;
 
-    @Column(name = "to_planet_id")
-    private String toPlanetId;
+    @Getter
+    @Setter
+    @OneToOne
+    @JoinColumn(name = "to_planet_id", nullable = false)
+    private Planet toPlanet;
 }

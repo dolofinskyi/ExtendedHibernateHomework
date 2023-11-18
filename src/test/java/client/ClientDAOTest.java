@@ -46,14 +46,9 @@ class ClientDAOTest {
 
     @Test
     void testDeleteClient() {
-        // add a new client to avoid reference violation
-        Client client = new Client();
-        client.setName("Martin");
-        dao.add(session, client);
-
         Client last = dao.getLast(session);
         dao.delete(session, last);
-        assertNotEquals(client.getId(), dao.getLast(session).getId());
+        assertNotEquals(last.getId(), dao.getLast(session).getId());
     }
 
     @AfterAll
