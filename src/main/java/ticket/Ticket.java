@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class Ticket {
     @Getter
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Getter

@@ -15,3 +15,5 @@ P
  src/main/java/client/Client.java,c\5\c5c2abc05e75daf87e5d896f0c1528ea106af1a0
 W
 'src/test/java/ticket/TicketDAOTest.java,c\d\cd7ee803db78e31610e793232c5d6a8b281e29e8
+S
+#src/main/java/client/ClientDAO.java,4\1\417fdf4c71fb50fefc18fee5ebad1989ab151d04
