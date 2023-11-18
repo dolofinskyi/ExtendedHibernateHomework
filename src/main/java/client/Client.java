@@ -21,6 +21,7 @@ public class Client {
     private String name;
 
     @Getter
+    @Setter
     @OneToMany(mappedBy = "client")
     private List<Ticket> tickets;
 }

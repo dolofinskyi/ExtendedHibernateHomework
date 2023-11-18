@@ -1,13 +1,11 @@
 package ticket;
 
-import client.Client;
-import dao.ServiceDAO;
 import db.HibernateService;
 import db.MigrationService;
 import org.hibernate.Session;
 import org.junit.jupiter.api.*;
-import planet.Planet;
-
+import planet.PlanetDAO;
+import client.ClientDAO;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,17 +14,17 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 class TicketDAOTest {
     private static Session session;
 
-    private static ServiceDAO<Ticket> tickedDAO;
-    private static ServiceDAO<Client> clientDAO;
-    private static ServiceDAO<Planet> planetDAO;
+    private static TicketDAO tickedDAO;
+    private static ClientDAO clientDAO;
+    private static PlanetDAO planetDAO;
 
     @BeforeAll
     public static void beforeAll() {
         MigrationService.migrate();
         session = HibernateService.INSTANCE.getSessionFactory().openSession();
-        tickedDAO = new ServiceDAO<>(Ticket.class);
-        clientDAO = new ServiceDAO<>(Client.class);
-        planetDAO = new ServiceDAO<>(Planet.class);
+        tickedDAO = new TicketDAO();
+        clientDAO = new ClientDAO();
+        planetDAO = new PlanetDAO();
     }
 
     @Test

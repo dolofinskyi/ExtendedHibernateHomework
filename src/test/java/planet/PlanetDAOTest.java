@@ -1,6 +1,5 @@
 package planet;
 
-import dao.ServiceDAO;
 import db.HibernateService;
 import db.MigrationService;
 import org.hibernate.Session;
@@ -13,13 +12,13 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class PlanetDAOTest {
     private static Session session;
-    private static ServiceDAO<Planet> dao;
+    private static PlanetDAO dao;
 
     @BeforeAll
     public static void beforeAll() {
         MigrationService.migrate();
         session = HibernateService.INSTANCE.getSessionFactory().openSession();
-        dao = new ServiceDAO<>(Planet.class);
+        dao = new PlanetDAO();
     }
 
     @Test
